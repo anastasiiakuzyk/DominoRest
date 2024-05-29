@@ -27,9 +27,7 @@ add_executable(${PROJECT_NAME}
         board_generator.cpp
         utils.cpp
         db_handler.cpp
-        db_handler.h
         auth_handler.cpp
-        auth_handler.h
 )
 
 # Create the test executable
