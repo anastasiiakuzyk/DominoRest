@@ -59,3 +59,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC OpenSSL::SSL)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${SQLite3_LIBRARIES})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
+
+enable_testing()
+
+# Add test
+add_test(NAME DominoRestTests COMMAND DominoRestTests)
