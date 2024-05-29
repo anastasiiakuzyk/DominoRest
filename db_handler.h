@@ -5,8 +5,9 @@
 #include <sqlite3.h>
 
 namespace db_handler {
+    static const char *DB_PATH = "test.db";
 
-    int save_into_db(int cols, int rows, const std::string& board);
+    int save_into_db(int cols, int rows, const std::string &board);
 
     std::string get_board_by_id(int id);
 
