@@ -42,4 +42,6 @@ public:
                              std::vector<std::vector<int> > &placement,
                              std::vector<Domino> &dominos,
                              int x, int y);
+
+    static void* solve_puzzle_thread(void* arg);
 };
