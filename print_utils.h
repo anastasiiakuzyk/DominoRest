@@ -27,5 +27,3 @@ void print_board_with_solution(const std::vector<std::vector<int>>& board,
  * @param output The output stream to write the dominos representation.
  */
 void print_dominos(const std::vector<Domino>& dominos, std::ostringstream &output, int rows);
-
-void print_dominos(const std::vector<Domino> &dominos, int rows);

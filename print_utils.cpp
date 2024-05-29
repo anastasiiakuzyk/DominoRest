@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <sstream>
-#include <iostream>
 
 /**
  * @file print_utils.cpp
@@ -77,17 +76,5 @@ void print_dominos(const std::vector<Domino> &dominos, std::ostringstream &outpu
         }
 
         output << "\n";
-    }
-}
-
-void print_dominos(const std::vector<Domino> &dominos, int rows) {
-    for (int i = 0; i < rows; ++i) {
-        for (const Domino &domino: dominos) {
-            if (domino.side2 == i) {
-                std::cout << "[" << domino.side1 << "|" << domino.side2 << "] ";
-            }
-        }
-
-        std::cout << "\n";
     }
 }
