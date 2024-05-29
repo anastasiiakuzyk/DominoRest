@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.27.8)
+cmake_minimum_required(VERSION 3.16.3)
 project(DominoRest)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 # Include directories
 include_directories(/opt/homebrew/Cellar/asio/1.28.1/include)
@@ -16,6 +17,7 @@ add_subdirectory(libs/googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+find_package(Threads REQUIRED)
 # Create the main executable
 add_executable(${PROJECT_NAME}
         main.cpp
@@ -51,7 +53,9 @@ find_package(OpenSSL REQUIRED)
 find_package(SQLite3 REQUIRED)
 include_directories(${SQLite3_INCLUDE_DIRS})
 
-target_link_libraries(${PROJECT_NAME} OpenSSL::SSL)
+target_link_libraries(${PROJECT_NAME} PUBLIC OpenSSL::SSL)
 
 # Link SQLite3 library
-target_link_libraries(${PROJECT_NAME} ${SQLite3_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${SQLite3_LIBRARIES})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
