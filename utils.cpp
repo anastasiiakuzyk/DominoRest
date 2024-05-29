@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <algorithm>
 
 int find_max_pips(const std::vector<std::vector<int>> &board) {
     int maxPips = 0;
