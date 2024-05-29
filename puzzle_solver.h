@@ -7,6 +7,14 @@
  * @brief Declaration of the PuzzleSolver class and its methods for solving the domino puzzle.
  */
 
+struct ThreadData {
+    const std::vector<std::vector<int>> *board;
+    std::vector<std::vector<int>> *placement;
+    std::vector<Domino> *dominos;
+    int x;
+    int y;
+};
+
 /**
  * @class PuzzleSolver
  * @brief Provides static methods for solving the domino puzzle.
@@ -44,4 +52,6 @@ public:
                              int x, int y);
 
     static void* solve_puzzle_thread(void* arg);
+
+    static bool get_solution_found();
 };

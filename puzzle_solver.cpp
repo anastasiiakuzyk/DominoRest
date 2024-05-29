@@ -15,13 +15,9 @@ pthread_mutex_t mutex;
 // Shared variable to stop threads when solution is found
 volatile bool solution_found = false;
 
-struct ThreadData {
-    const std::vector<std::vector<int>> *board;
-    std::vector<std::vector<int>> *placement;
-    std::vector<Domino> *dominos;
-    int x;
-    int y;
-};
+bool PuzzleSolver::get_solution_found() {
+    return solution_found;
+}
 
 void *PuzzleSolver::solve_puzzle_thread(void *arg) {
     ThreadData *data = static_cast<ThreadData *>(arg);
@@ -31,11 +27,7 @@ void *PuzzleSolver::solve_puzzle_thread(void *arg) {
     int x = data->x;
     int y = data->y;
 
-
-    // Initialize the mutex
-    if (pthread_mutex_init(&mutex, NULL) != 0) {
-        std::cerr << "Failed to initialize mutex" << std::endl;
-    }
+    pthread_mutex_init(&mutex, nullptr);
     pthread_mutex_lock(&mutex);
     bool result = solve_puzzle(board, placement, dominos, x, y);
     pthread_mutex_unlock(&mutex);
@@ -101,66 +93,42 @@ bool PuzzleSolver::solve_puzzle(const std::vector<std::vector<int>> &board,
                                 std::vector<std::vector<int>> &placement,
                                 std::vector<Domino> &dominos,
                                 int x, int y) {
-    if (solution_found) return true; // Early exit if solution is found
-
     int rows = board.size();
     int cols = board[0].size();
 
+    if (x >= rows) return true; // Reached the end of the board
+
     if (y >= cols) {
-        y = 0;
-        x++;
-        if (x >= rows) {
-            return true;
-        }
+        return solve_puzzle(board, placement, dominos, x + 1, 0); // Move to the next row
     }
 
     if (placement[x][y] != -1) {
-        return solve_puzzle(board, placement, dominos, x, y + 1);
+        return solve_puzzle(board, placement, dominos, x, y + 1); // Skip filled cell
     }
 
-    for (size_t i = 0; i < dominos.size() && !solution_found; ++i) {
-        if (dominos[i].used) continue;
+    for (Domino &domino: dominos) {
+        if (domino.used) continue;
 
-        // Try horizontal and vertical placement
-        if (y + 1 < cols && can_place(board, placement, dominos[i], x, y, true)) {
-            dominos[i].used = true;
-            placement[x][y] = placement[x][y + 1] = i;
-
-            ThreadData *data = new ThreadData{&board, &placement, &dominos, x, y + 1};
-            pthread_t thread;
-            if (pthread_create(&thread, nullptr, solve_puzzle_thread, data) == 0) {
-                pthread_join(thread, nullptr);
-            } else {
-                delete data;
-            }
-
-            if (solution_found) return true;
-
-            // Backtrack
-            dominos[i].used = false;
+        // Try horizontal placement
+        if (can_place(board, placement, domino, x, y, true)) {
+            domino.used = true;
+            placement[x][y] = placement[x][y +
+                                           1] = domino.side1; // Use domino index or a unique identifier instead of side1
+            if (solve_puzzle(board, placement, dominos, x, y + 2)) return true;
             placement[x][y] = placement[x][y + 1] = -1;
+            domino.used = false;
         }
 
-        // Vertical placement
-        if (x + 1 < rows && can_place(board, placement, dominos[i], x, y, false)) {
-            dominos[i].used = true;
-            placement[x][y] = placement[x + 1][y] = i;
-
-            ThreadData *data = new ThreadData{&board, &placement, &dominos, x + 1, y};
-            pthread_t thread;
-            if (pthread_create(&thread, nullptr, solve_puzzle_thread, data) == 0) {
-                pthread_join(thread, nullptr);
-            } else {
-                delete data;
-            }
-
-            if (solution_found) return true;
-
-            // Backtrack
-            dominos[i].used = false;
+        // Try vertical placement
+        if (can_place(board, placement, domino, x, y, false)) {
+            domino.used = true;
+            placement[x][y] = placement[x +
+                                        1][y] = domino.side1; // Use domino index or a unique identifier instead of side1
+            if (solve_puzzle(board, placement, dominos, x, y + 1)) return true;
             placement[x][y] = placement[x + 1][y] = -1;
+            domino.used = false;
         }
     }
 
-    return false;
+    return false; // No placement found
 }
