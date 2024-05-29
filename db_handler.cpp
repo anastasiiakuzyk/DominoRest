@@ -5,7 +5,7 @@
 
 namespace db_handler {
 
-    static const char* DB_PATH = "/Users/anastasiia/test.db";
+    static const char* DB_PATH = "test.db";
 
     static int callback(void *data, int argc, char **argv, char **azColName) {
         auto *result = static_cast<std::string *>(data);
