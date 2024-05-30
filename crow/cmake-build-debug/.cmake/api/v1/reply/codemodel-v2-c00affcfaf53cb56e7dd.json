@@ -1,0 +1,401 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-e171d25337722c0e85ae.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						19
+					]
+				},
+				{
+					"build" : "examples",
+					"jsonFile" : "directory-examples-Debug-1c8b83b621b6ef38a245.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "examples",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"build" : "tests",
+					"childIndexes" : 
+					[
+						3,
+						4,
+						5,
+						6
+					],
+					"jsonFile" : "directory-tests-Debug-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						20
+					]
+				},
+				{
+					"build" : "tests/template",
+					"jsonFile" : "directory-tests.template-Debug-8840689fb64f0223fd79.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 3,
+					"source" : "tests/template",
+					"targetIndexes" : 
+					[
+						15,
+						16
+					]
+				},
+				{
+					"build" : "tests/multi_file",
+					"jsonFile" : "directory-tests.multi_file-Debug-9754f7a2883a99f23159.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 4,
+					"source" : "tests/multi_file",
+					"targetIndexes" : 
+					[
+						18
+					]
+				},
+				{
+					"build" : "tests/external_definition",
+					"jsonFile" : "directory-tests.external_definition-Debug-96db9f14b07eb602e913.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 5,
+					"source" : "tests/external_definition",
+					"targetIndexes" : 
+					[
+						17
+					]
+				},
+				{
+					"build" : "tests/img",
+					"jsonFile" : "directory-tests.img-Debug-d67cbcdad5fce3ec9b92.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "tests/img"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Crow",
+					"targetIndexes" : 
+					[
+						19
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "crow_examples",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						3,
+						4,
+						5
+					],
+					"directoryIndexes" : 
+					[
+						2,
+						6
+					],
+					"name" : "crow_test",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "template_test",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						15,
+						16
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "test_multi_file",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						18
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "test_external_definition",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "basic_example::@714eac15f71a94114fdf",
+					"jsonFile" : "target-basic_example-Debug-a9fb9f5e806df0ca5d5c.json",
+					"name" : "basic_example",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_blueprint::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_blueprint-Debug-f733a709562b522b3cad.json",
+					"name" : "example_blueprint",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_catchall::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_catchall-Debug-76d8c8cfde26c9ac51d6.json",
+					"name" : "example_catchall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_chat::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_chat-Debug-43505a421083fdb131ed.json",
+					"name" : "example_chat",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_chat_copy::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_chat_copy-Debug-6d6d2783a7844eb9d710.json",
+					"name" : "example_chat_copy",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_cookies::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_cookies-Debug-6bb8d1e594cb91ded987.json",
+					"name" : "example_cookies",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_cors::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_cors-Debug-1f7d9294d571457905ea.json",
+					"name" : "example_cors",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_file_upload::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_file_upload-Debug-ec2b9e2f97b169d2a897.json",
+					"name" : "example_file_upload",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_json_map::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_json_map-Debug-74f7fdc040338b93f18e.json",
+					"name" : "example_json_map",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_middleware::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_middleware-Debug-f2f3ce4ecaf82d8afb7f.json",
+					"name" : "example_middleware",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_session::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_session-Debug-32b4f8bcf76de1928a9e.json",
+					"name" : "example_session",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_static_file::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_static_file-Debug-7900191214d54942ec2e.json",
+					"name" : "example_static_file",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_websocket::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_websocket-Debug-273dda0e2ebaaca29075.json",
+					"name" : "example_websocket",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "example_ws_copy::@714eac15f71a94114fdf",
+					"jsonFile" : "target-example_ws_copy-Debug-08fd4071c6955455c50e.json",
+					"name" : "example_ws_copy",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "helloworld::@714eac15f71a94114fdf",
+					"jsonFile" : "target-helloworld-Debug-d4747cb4f7228fa9aed1.json",
+					"name" : "helloworld",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "mustachetest::@65d670d825d62bb0d645",
+					"jsonFile" : "target-mustachetest-Debug-cec44542d977165918b7.json",
+					"name" : "mustachetest",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "template_test_copy::@65d670d825d62bb0d645",
+					"jsonFile" : "target-template_test_copy-Debug-775c41b9dec33e4af273.json",
+					"name" : "template_test_copy",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "test_external_definition::@b3657ca8a52a81deda66",
+					"jsonFile" : "target-test_external_definition-Debug-bce15b34d7e9bd912c54.json",
+					"name" : "test_external_definition",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "test_multi_file::@5019626c723aa72a56cc",
+					"jsonFile" : "target-test_multi_file-Debug-c94f2134ef18331149dc.json",
+					"name" : "test_multi_file",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-2d67d4d3fdb0176d59bc.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "unittest::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-unittest-Debug-eee8ce9bab6f2a98312c.json",
+					"name" : "unittest",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/anastasiia/CLionProjects/rest/dependencies/Crow/cmake-build-debug",
+		"source" : "/Users/anastasiia/CLionProjects/rest/dependencies/Crow"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
