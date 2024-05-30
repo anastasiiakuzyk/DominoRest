@@ -4,13 +4,17 @@
 #include <string>
 #include <sqlite3.h>
 
-namespace db_handler {
-    static const char *DB_PATH = "test.db";
+static const char *DB_PATH = "test.db";
 
-    int save_into_db(int cols, int rows, const std::string &board);
+int save_into_db(int cols, int rows, const std::string &board);
 
-    std::string get_board_by_id(int id);
+std::string get_board_by_id(int id);
 
-}
+sqlite3 *open_database();
+
+void
+execute_sql(sqlite3 *db, const std::string &sql, int (*callback)(void *, int, char **, char **), void *callback_arg);
+
+int callback(void *data, int argc, char **argv, char **azColName);
 
 #endif //DOMINOREST_DB_HANDLER_H

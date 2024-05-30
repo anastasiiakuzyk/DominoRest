@@ -4,23 +4,27 @@
 #include "crow.h"
 #include <unordered_map>
 
-namespace auth {
+struct User {
+    std::string salt;
+    std::string hashed_password;
+};
 
-    struct User {
-        std::string salt;
-        std::string hashed_password;
-    };
+std::string generateNonce(size_t length);
 
-    bool authenticate(const std::string &token);
+std::string pbkdf2Sha256(const std::string &password, const std::string &salt, int iterations, int keyLen);
 
-    crow::response register_route(const crow::request &req);
+bool authenticate(const std::string &token);
 
-    crow::response login_route(const crow::request &req);
+crow::response register_route(const crow::request &req);
 
-    crow::response create_dev_key_route(const crow::request &req);
+crow::response login_route(const crow::request &req);
 
-    bool verifyDevKey(const std::string &dev_key);
+crow::response create_dev_key_route(const crow::request &req);
 
-}
+bool verifyDevKey(const std::string &dev_key);
+
+std::string generateToken();
+
+std::string generateDevKey();
 
 #endif //DOMINOREST_AUTH_HANDLER_H

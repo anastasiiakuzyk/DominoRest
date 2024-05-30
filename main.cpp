@@ -130,7 +130,7 @@ crow::response generate_board_route(const crow::request &req) {
         }
 
         std::string string_board = dto["board"].dump();
-        int board_id = db_handler::save_into_db(cols, rows, string_board);
+        int board_id = save_into_db(cols, rows, string_board);
 
         dto["id"] = board_id;
 
@@ -178,7 +178,7 @@ crow::response generate_all_boards_route(const crow::request &req) {
         auto board = generate_board(rows, cols);
         crow::json::wvalue dto;
         for (size_t i = 0; i < allBoards.size(); ++i) {
-            int board_id = db_handler::save_into_db(cols, rows, board_to_json_string(allBoards[i]));
+            int board_id = save_into_db(cols, rows, board_to_json_string(allBoards[i]));
             dto["boards"][i]["id"] = board_id;
         }
         return crow::response{dto};
@@ -195,7 +195,7 @@ crow::response generate_all_boards_route(const crow::request &req) {
 }
 
 crow::response get_board_by_id_route(int board_id) {
-    std::string board_json = db_handler::get_board_by_id(board_id);
+    std::string board_json = get_board_by_id(board_id);
     if (board_json.empty()) {
         CROW_LOG_ERROR << "Not Found: Board does not exist.";
         return crow::response(404, "Not Found: Board does not exist.");
@@ -204,13 +204,13 @@ crow::response get_board_by_id_route(int board_id) {
 }
 
 void setup_routes(crow::SimpleApp &app) {
-    CROW_ROUTE(app, "/register").methods(crow::HTTPMethod::Post)(auth::register_route);
-    CROW_ROUTE(app, "/login").methods(crow::HTTPMethod::Post)(auth::login_route);
+    CROW_ROUTE(app, "/register").methods(crow::HTTPMethod::Post)(register_route);
+    CROW_ROUTE(app, "/login").methods(crow::HTTPMethod::Post)(login_route);
     CROW_ROUTE(app, "/solve").methods(crow::HTTPMethod::Post)(solve_route);
     CROW_ROUTE(app, "/generate_board").methods(crow::HTTPMethod::Get)(generate_board_route);
     CROW_ROUTE(app, "/get_board_by_id/<int>").methods(crow::HTTPMethod::Get)(get_board_by_id_route);
     CROW_ROUTE(app, "/generate_all_boards").methods(crow::HTTPMethod::Get)(generate_all_boards_route);
-    CROW_ROUTE(app, "/create_dev_key").methods(crow::HTTPMethod::Post)(auth::create_dev_key_route);
+    CROW_ROUTE(app, "/create_dev_key").methods(crow::HTTPMethod::Post)(create_dev_key_route);
 }
 
 crow::response solve_domino_puzzle(const std::vector<std::vector<int> > &board) {
