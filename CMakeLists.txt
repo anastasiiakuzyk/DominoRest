@@ -36,11 +36,15 @@ add_executable(DominoRestTests
         tests/test_print_utils.cpp
         tests/test_board_generator.cpp
         tests/test_utils.cpp
+        tests/test_db_handler.cpp
+        tests/test_auth_handler.cpp
         puzzle_solver.cpp
         domino.cpp
         print_utils.cpp
         board_generator.cpp
         utils.cpp
+        db_handler.cpp
+        auth_handler.cpp
 )
 
 # Link test executable with GoogleTest
@@ -52,9 +56,11 @@ find_package(SQLite3 REQUIRED)
 include_directories(${SQLite3_INCLUDE_DIRS})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC OpenSSL::SSL)
+target_link_libraries(DominoRestTests OpenSSL::SSL)
 
 # Link SQLite3 library
 target_link_libraries(${PROJECT_NAME} PUBLIC ${SQLite3_LIBRARIES})
+target_link_libraries(DominoRestTests ${SQLite3_LIBRARIES})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
 

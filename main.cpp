@@ -10,6 +10,8 @@
 #include <openssl/sha.h>
 #include <stdexcept>
 #include <iostream>
+#include <iomanip>
+#include <chrono>
 
 /**
  * @file main.cpp
@@ -35,6 +37,7 @@ int main() {
     crow::SimpleApp app;
     setup_routes(app);
     app.port(18080).multithreaded().run();
+    // Destroy the mutex
 }
 
 namespace domino_solver {
@@ -68,13 +71,13 @@ namespace domino_solver {
  * the solution or an error message.
  */
 crow::response solve_route(const crow::request &req) {
-    std::string token = req.get_header_value("Authorization");
-    std::string dev_key = req.get_header_value("Dev-Key");
-
-    if (!auth::authenticate(token) && !auth::verifyDevKey(dev_key)) {
-        CROW_LOG_ERROR << "Unauthorized: Invalid or missing token/dev-key.";
-        return crow::response(401, "Unauthorized: Invalid or missing token/dev-key.");
-    }
+//    std::string token = req.get_header_value("Authorization");
+//    std::string dev_key = req.get_header_value("Dev-Key");
+//
+//    if (!authenticate(token) && !verifyDevKey(dev_key)) {
+//        CROW_LOG_ERROR << "Unauthorized: Invalid or missing token/dev-key.";
+//        return crow::response(401, "Unauthorized: Invalid or missing token/dev-key.");
+//    }
 
     auto x = crow::json::load(req.body);
     if (!x) {
@@ -229,7 +232,13 @@ crow::response solve_domino_puzzle(const std::vector<std::vector<int> > &board) 
     output << std::endl << "Dominos:" << std::endl;
     print_dominos(dominos, output, maxPips + 1);
 
+    // time
+    auto start = std::chrono::high_resolution_clock::now();
     bool solved = PuzzleSolver::solve_puzzle(board, placement, dominos, 0, 0);
+    // time
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    output << "Time to solve: " << std::fixed << std::setprecision(8) << elapsed.count() << " seconds" << std::endl;
 
     if (solved) {
         output << std::endl << "Solution:" << std::endl;
